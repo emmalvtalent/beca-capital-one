@@ -12,4 +12,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    allowedHosts: [
+      'beca-capital-one.onrender.com',
+    ]
+  },
+  preview: {
+    // This handles the environment where you're seeing the error
+    allowedHosts: [
+      'beca-capital-one.onrender.com',
+    ]
+
 });

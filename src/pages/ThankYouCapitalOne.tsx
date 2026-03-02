@@ -1,39 +1,8 @@
 import { useEffect } from 'react';
-import { Calendar, MapPin, Clock, Mail, CheckCircle, Download } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import {  Mail, CheckCircle, } from 'lucide-react';
 import { Footer } from '@/components/Footer';
 
 export function ThankYouCapitalOne() {
-  // Generate and download calendar file
-  const handleAddToCalendar = () => {
-    const event = {
-      title: 'Rueda de Prensa - Talent Land México 2026',
-      description: 'Presentación oficial de Talent Land México 2026. Descubre todas las novedades de la edición.',
-      location: 'Castillo de Chapultepec, Av. Heroico Colegio Militar 172, Bosque de Chapultepec I Secc, Miguel Hidalgo, 11580 Ciudad de México',
-      startDate: '20260210T110000',
-      endDate: '20260210T130000',
-    };
-
-    const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-DTSTART:${event.startDate}
-DTEND:${event.endDate}
-SUMMARY:${event.title}
-DESCRIPTION:${event.description}
-LOCATION:${event.location}
-END:VEVENT
-END:VCALENDAR`;
-
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'rueda-prensa-talent-land-2026.ics';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   useEffect(() => {
     // Update page title
     document.title = 'Solicitud Recibida | Beca Capital One Talent Land 2026';

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Send, CheckCircle, ChevronDown } from 'lucide-react';
+import {  CheckCircle, ChevronDown } from 'lucide-react';
 
 interface RegistrationFormProps {
   redirectPath: string;
@@ -57,6 +57,7 @@ export function CapitalOneRegistrationForm({ redirectPath, buttonText = 'Enviar 
     aniosCloud: '',
     porqueBeca: '',
     aceptaTerminos: false,
+      otherLanguage: ""
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -85,7 +86,7 @@ export function CapitalOneRegistrationForm({ redirectPath, buttonText = 'Enviar 
   //     return prev;
   //   });
   // };
-    const handleCheckboxChange = (lang) => {
+    const handleCheckboxChange = (lang:string) => {
         setFormData((prev) => {
             const isSelected = prev.lenguajes.includes(lang);
 
@@ -141,32 +142,32 @@ export function CapitalOneRegistrationForm({ redirectPath, buttonText = 'Enviar 
         </select>
       </div>
   );
-  const renderNumberInput = (name: string, label: string, min: number, max: number, required = true) => (
-      <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
-        <Label htmlFor={name} className="text-gray-300 text-sm md:w-48 shrink-0">
-          {label}: {required && <span className="text-[#00ff66]">*</span>}
-        </Label>
-        <div className="relative flex-1">
-          <input
-              id={name}
-              name={name}
-              type="number"
-              min={min}
-              max={max}
-              required={required}
-              value={(formData as any)[name]}
-              onChange={handleChange}
-              placeholder="--"
-              className="w-full bg-white/5 border border-white/10 rounded-md text-white h-9 text-sm px-3 focus:border-[#00ff66] focus:ring-1 focus:ring-[#00ff66]/20 outline-none transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-          />
-          {/* Indicador visual de flechas opcional o dejar las nativas */}
-          <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col pointer-events-none opacity-50">
-            <ChevronDown className="w-3 h-3 rotate-180 mb-[-2px]" />
-            <ChevronDown className="w-3 h-3" />
-          </div>
-        </div>
-      </div>
-  );
+  // const renderNumberInput = (name: string, label: string, min: number, max: number, required = true) => (
+  //     <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
+  //       <Label htmlFor={name} className="text-gray-300 text-sm md:w-48 shrink-0">
+  //         {label}: {required && <span className="text-[#00ff66]">*</span>}
+  //       </Label>
+  //       <div className="relative flex-1">
+  //         <input
+  //             id={name}
+  //             name={name}
+  //             type="number"
+  //             min={min}
+  //             max={max}
+  //             required={required}
+  //             value={(formData as any)[name]}
+  //             onChange={handleChange}
+  //             placeholder="--"
+  //             className="w-full bg-white/5 border border-white/10 rounded-md text-white h-9 text-sm px-3 focus:border-[#00ff66] focus:ring-1 focus:ring-[#00ff66]/20 outline-none transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+  //         />
+  //         {/* Indicador visual de flechas opcional o dejar las nativas */}
+  //         <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col pointer-events-none opacity-50">
+  //           <ChevronDown className="w-3 h-3 rotate-180 mb-[-2px]" />
+  //           <ChevronDown className="w-3 h-3" />
+  //         </div>
+  //       </div>
+  //     </div>
+  // );
   const renderNumberStepper = (name: string, label: string, min: number, max: number, required = true) => {
     const currentValue = parseInt((formData as any)[name]) || 0;
 
@@ -381,12 +382,7 @@ export function CapitalOneRegistrationForm({ redirectPath, buttonText = 'Enviar 
                           type="checkbox"
                           name="aceptaTerminos"
                           checked={formData.aceptaTerminos || false}
-                          onChange={(e) => handleChange({
-                              target: {
-                                  name: 'aceptaTerminos',
-                                  value: e.target.checked
-                              }
-                          })}
+                          onChange={handleChange}
                           className="w-4 h-4 rounded border-white/10 bg-white/5 text-[#00ff66] focus:ring-offset-black focus:ring-[#00ff66] transition-colors"
                       />
                   </div>

@@ -22,5 +22,5 @@ export default defineConfig({
     allowedHosts: [
       'beca-capital-one.onrender.com',
     ]
-
+  }
 });
